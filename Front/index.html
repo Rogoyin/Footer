@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <link rel="stylesheet" href="Normalize.css">
+        <link rel="stylesheet" href="Styles.css">
+        <title></title>
+    </head>
+
+    <body>
+        <form>
+            <fieldset>
+                <legend>Equipos</legend>
+                <div class="Campo">
+
+                    <div class="Linea-Formulario">
+                        <label for="NEUT">Partido en campo neutral:</label> 
+                        <input id="NEUT" type="checkbox" name="NEUT">
+                    </div>
+
+                    <div class="Linea-Formulario">
+                        <label for="EQU-01">Equipo 1: </label> 
+                        <input id="EQU-01" type="text" placeholder="River Plate"> 
+
+                        <!-- Si se tilda el primer checkbox, el de partido neutral, desaparece: con JS -->
+                        <label for="COND-01">Condición: </label> 
+                        <select id="COND-01">
+                            <option disabled selected>--- Seleccionar ---</option> 
+                            <option>Local</option> 
+                            <option>Visitante</option> 
+                        </select>
+                    </div>
+
+                    <div class="Linea-Formulario">
+                        <label for="Visitante">Equipo 2: </label> 
+                        <input id="Visitante" type="text" placeholder="Boca Juniors">
+
+                        <!-- Si se tilda el primer checkbox, el de partido neutral, desaparece: con JS -->
+                        <label for="COND-02">Condición: </label> 
+                        <select id="COND-02">
+                            <option disabled selected>--- Seleccionar ---</option> 
+                            <option>Local</option> 
+                            <option>Visitante</option> 
+                        </select>
+                    </div>
+
+                </div>
+            </fieldset>
+        
+
+        <fieldset>
+            <legend>Datos del partido</legend>
+
+            <div class="Linea-Formulario">
+                <label for="Fecha">Fecha: </label> 
+                <input id="Fecha" type="date"> 
+
+                <label for="Hora">Hora: </label> 
+                <input id="Hora" type="time">
+            </div>
+
+            <div class="Linea-Formulario">
+                <label for="Estadio">Estadio: </label> 
+                <input id="Estadio" type="text" placeholder="Monumental">
+            </div>
+
+            <div class="Linea-Formulario">
+                <label for="Árbitro">Árbitro: </label> 
+                <input id="Árbitro" type="text" placeholder="Patricio Lousteau">
+            </div>
+
+            <div class="Linea-Formulario"> <!-- Este después se cambia a una lista desplegable que sale de una lista de torneos -->
+                <label for="Torneo">Torneo: </label> 
+                <input id="Torneo" type="text" placeholder="Copa Libertadores">
+            </div>
+
+            <div class="Linea-Formulario">
+                <label for="Tipo de partido">Tipo de partido: </label> 
+                <select id="Tipo de partido">
+                    <option disabled selected>--- Seleccionar ---</option> 
+                    <option>Liga</option> 
+                    <option>Fase de grupos</option> 
+                    <option>Eliminación directa</option>
+                </select>
+            </div>
+
+            <div class="Linea-Formulario">
+                <!-- Si es eliminación directa, se activa: función con JS -->
+                <label for="Instancia">Instancia: </label> 
+                <select id="Instancia">
+                    <option disabled selected>--- Seleccionar ---</option> 
+                    <option>Fase 1</option>
+                    <option>Fase 2</option>
+                    <option>Fase 3</option>
+                    <option>32avos del final</option>
+                    <option>16avos del final</option>
+                    <option>Octavos del final</option> 
+                    <option>Cuartos del final</option> 
+                    <option>Semifinal</option>
+                    <option>Final</option>
+                    <option>Desempate</option>
+                </select>
+
+                <label for="Llave">Llave: </label> 
+                <select id="Llave">
+                    <option disabled selected>--- Seleccionar ---</option> 
+                    <option>Único</option>
+                    <option>Ida</option>
+                    <option>Vuelta</option>
+                    <option>Desempate</option>
+                </select>
+
+                <!-- Si es torneo local, se activa: función con JS -->
+                <label for="Fecha">Fecha: </label> 
+                <input id="Fecha" type="text" placeholder="2">
+            </div>
+
+            <div class="Linea-Formulario">
+                <label for="Espectadores">Espectadores: </label> 
+                <input id="Espectadores" type="number" placeholder="100530">
+            </div>
+
+            <div class="Linea-Formulario">
+                <label for="Suspendido">Suspendido:</label> 
+                <input id="Suspendido" type="checkbox" name="Suspendido">
+
+                <!-- Si se tilda el primer checkbox, se activa todo lo siguiente en el div: función con JS -->
+                <label for="Suspendido-Minuto">Minuto: </label> 
+                <input id="Suspendido-Minuto" type="number" placeholder="25">
+
+                <label for="Suspendido-Fecha">Fecha de reanudación: </label> 
+                <input id="Suspendido-Fecha" type="date"> 
+
+                <label for="Suspendido-Hora">Hora: </label> 
+                <input id="Suspendido-Hora" type="time">
+
+                <label for="Suspendido-Ganador">Ganador:</label> 
+                <input id="Suspendido-Ganador" type="text"> 
+            </div>
+
+        </fieldset>
+        
+        <fieldset>
+            <!-- JS: El legend tiene que cambiar al nombre que se especifica del equipo -->
+            <legend>Equipo 2</legend>
+
+            <div class="Campo">
+                <label for="GOL-2">Goles: </label> 
+                <input id="GOL-2" type="number" placeholder="3">
+                
+                <!-- JS: Se generan tantos divs de Goles como números se especifiquen anteriormente -->
+                <div class="Linea-Formulario Goles">
+                    <label for="GOL01-2">Gol 1: </label> 
+                    <input id="GOL01-2-AUT" type="text" placeholder="Autor">
+                    <input id="GOL01-2-ASI" type="text" placeholder="Asistidor">
+                    <input id="GOL01-2-MIN" type="number" placeholder="Minuto">
+
+                    <label for="GOL01-2-PAR">Parte del cuerpo:</label>
+                    <select id="GOL01-2-PAR">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Pierna Izquierda</option>
+                        <option>Pierna Derecha</option>
+                        <option>Cabeza</option>
+                        <option>Rodilla Izquierda</option>
+                        <option>Rodilla Derecha</option>
+                        <option>Pecho</option>
+                        <option>Mano</option>
+                        <option>Otro</option>
+                    </select>
+
+                    <!-- JS: Casilla de "Especificar parte" se genera si se elige "Otro" en el campo anterior -->
+                    <input id="GOL01-2-PAR-ESP" type="text" placeholder="Especificar parte">
+
+                    <label for="GOL01-2-PEN">Penal:</label> 
+                    <input id="GOL01-2-PEN" type="checkbox" name="GOL01-2-PEN">
+
+                    <label for="GOL01-2-TIR">Tiro libre:</label> 
+                    <input id="GOL01-2-TIR" type="checkbox" name="GOL01-2-TIR">
+
+                    <!-- JS: Se desactiva si se tilda Penal o Tiro Libre -->
+                    <label for="GOL01-2-DIS">Distancia:</label>
+                    <select id="GOL01-2-DIS">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Área chica</option>
+                        <option>Área grande</option>
+                        <option>Fuera del área</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="Campo">
+                <label for="PEN-2">Penales: </label> 
+                <input id="PEN-2" type="number" placeholder="3">
+
+                <!-- Se generan tantos divs de Penales como números se especifiquen anteriormente -->
+                <div class="Linea-Formulario">
+                    <label for="PEN01-2">Penal 1: </label> 
+                    <input id="PEN01-2-AUT" type="text" placeholder="Autor">
+                    <input id="PEN01-2-ASI" type="text" placeholder="Arquero">
+                    <input id="PEN01-2-MIN" type="number" placeholder="Minuto">
+
+                    <label for="PEN01-2-PAR">Resultado:</label>
+                    <select id="PEN01-2-PAR">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Gol</option>
+                        <option>Desviado</option>
+                        <option>Atajado</option>
+                    </select>
+
+                    <input id="PEN01-2-FAL" type="text" placeholder="Infractor">
+                    <input id="PEN01-2-PRO" type="text" placeholder="Generador">
+                </div>
+            </div>
+
+            <fieldset class="Protagonistas">
+                <legend>Protagonistas</legend>
+                <div class="Linea-Formulario">
+                    <label for="JUG01-2">Jugador 1: </label> 
+                    <input id="JUG01-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG01-2-CAM">Cambio:</label> 
+                    <input id="JUG01-2-CAM" type="checkbox" name="JUG01-2-CAM"> 
+
+                    <!-- JS: Casilla de "Minuto de Cambio", "Lesion" y "Reemplazo" se generan si se tilda la opción anterior -->
+                    <input id="JUG01-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG01-2-LES">Lesión:</label>
+                    <input id="JUG01-2-LES" type="checkbox">
+
+                    <input id="JUG01-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG01-2-AMA">Amarilla:</label> 
+                    <input id="JUG01-2-AMA" type="checkbox" name="JUG01-2-AMA">
+
+                    <!-- JS: Casilla de "Minuto de Amarilla" se genera si se tilda la opción anterior -->
+                    <input id="JUG01-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG01-2-ROJ">Roja:</label> 
+                    <input id="JUG01-2-ROJ" type="checkbox" name="JUG01-2-ROJ">
+
+                    <!-- JS: Casilla de "Razón de Expulsión", "Detalles de Expulsión" y "Minuto de Expulsión" se generan si se tilda la opción anterior -->
+                    <select id="JUG01-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG01-2-ROJ-DET" type="text" name="JUG01-2-ROJ-RAZ" placeholder="Detalles">
+
+                    <input id="JUG01-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG01-2-RET">Retiro:</label> 
+                    <input id="JUG01-2-RET" type="checkbox" name="JUG01-2-RET">
+
+                    <label for="JUG01-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG01-2-ARQ" type="checkbox" name="JUG01-2-ARQ">
+
+                    <input id="JUG01-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG02-2">Jugador 2: </label> 
+                    <input id="JUG02-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG02-2-CAM">Cambio:</label> 
+                    <input id="JUG02-2-CAM" type="checkbox" name="JUG02-2-CAM"> 
+
+                    <input id="JUG02-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG02-2-LES">Lesión:</label>
+                    <input id="JUG02-2-LES" type="checkbox">
+
+                    <input id="JUG02-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG02-2-AMA">Amarilla:</label> 
+                    <input id="JUG02-2-AMA" type="checkbox" name="JUG02-2-AMA">
+
+                    <input id="JUG02-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG02-2-ROJ">Roja:</label> 
+                    <input id="JUG02-2-ROJ" type="checkbox" name="JUG02-2-ROJ">
+
+                    <select id="JUG02-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG02-2-ROJ-DET" type="text" name="JUG02-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG02-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG02-2-RET">Retiro:</label> 
+                    <input id="JUG02-2-RET" type="checkbox" name="JUG02-2-RET">
+
+                    <label for="JUG02-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG02-2-ARQ" type="checkbox" name="JUG02-2-ARQ">
+
+                    <input id="JUG02-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG03-2">Jugador 3: </label> 
+                    <input id="JUG03-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG03-2-CAM">Cambio:</label> 
+                    <input id="JUG03-2-CAM" type="checkbox" name="JUG03-2-CAM"> 
+
+                    <input id="JUG03-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG03-2-LES">Lesión:</label>
+                    <input id="JUG03-2-LES" type="checkbox">
+
+                    <input id="JUG03-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG03-2-AMA">Amarilla:</label> 
+                    <input id="JUG03-2-AMA" type="checkbox" name="JUG03-2-AMA">
+
+                    <input id="JUG03-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG03-2-ROJ">Roja:</label> 
+                    <input id="JUG03-2-ROJ" type="checkbox" name="JUG03-2-ROJ">
+
+                    <select id="JUG03-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG03-2-ROJ-DET" type="text" name="JUG03-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG03-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG03-2-RET">Retiro:</label> 
+                    <input id="JUG03-2-RET" type="checkbox" name="JUG03-2-RET">
+
+                    <label for="JUG03-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG03-2-ARQ" type="checkbox" name="JUG03-2-ARQ">
+
+                    <input id="JUG03-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG04-2">Jugador 4: </label> 
+                    <input id="JUG04-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG04-2-CAM">Cambio:</label> 
+                    <input id="JUG04-2-CAM" type="checkbox" name="JUG04-2-CAM"> 
+
+                    <input id="JUG04-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG04-2-LES">Lesión:</label>
+                    <input id="JUG04-2-LES" type="checkbox">
+
+                    <input id="JUG04-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG04-2-AMA">Amarilla:</label> 
+                    <input id="JUG04-2-AMA" type="checkbox" name="JUG04-2-AMA">
+
+                    <input id="JUG04-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG04-2-ROJ">Roja:</label> 
+                    <input id="JUG04-2-ROJ" type="checkbox" name="JUG04-2-ROJ">
+
+                    <select id="JUG04-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG04-2-ROJ-DET" type="text" name="JUG04-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG04-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG04-2-RET">Retiro:</label> 
+                    <input id="JUG04-2-RET" type="checkbox" name="JUG04-2-RET">
+
+                    <label for="JUG04-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG04-2-ARQ" type="checkbox" name="JUG04-2-ARQ">
+
+                    <input id="JUG04-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG05-2">Jugador 5: </label> 
+                    <input id="JUG05-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG05-2-CAM">Cambio:</label> 
+                    <input id="JUG05-2-CAM" type="checkbox" name="JUG05-2-CAM"> 
+
+                    <input id="JUG05-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG05-2-LES">Lesión:</label>
+                    <input id="JUG05-2-LES" type="checkbox">
+
+                    <input id="JUG05-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG05-2-AMA">Amarilla:</label> 
+                    <input id="JUG05-2-AMA" type="checkbox" name="JUG05-2-AMA">
+
+                    <input id="JUG05-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG05-2-ROJ">Roja:</label> 
+                    <input id="JUG05-2-ROJ" type="checkbox" name="JUG05-2-ROJ">
+
+                    <select id="JUG05-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG05-2-ROJ-DET" type="text" name="JUG05-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG05-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG05-2-RET">Retiro:</label> 
+                    <input id="JUG05-2-RET" type="checkbox" name="JUG05-2-RET">
+
+                    <label for="JUG05-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG05-2-ARQ" type="checkbox" name="JUG05-2-ARQ">
+
+                    <input id="JUG05-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG06-2">Jugador 6: </label> 
+                    <input id="JUG06-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG06-2-CAM">Cambio:</label> 
+                    <input id="JUG06-2-CAM" type="checkbox" name="JUG06-2-CAM"> 
+
+                    <input id="JUG06-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG06-2-LES">Lesión:</label>
+                    <input id="JUG06-2-LES" type="checkbox">
+
+                    <input id="JUG06-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG06-2-AMA">Amarilla:</label> 
+                    <input id="JUG06-2-AMA" type="checkbox" name="JUG06-2-AMA">
+
+                    <input id="JUG06-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG06-2-ROJ">Roja:</label> 
+                    <input id="JUG06-2-ROJ" type="checkbox" name="JUG06-2-ROJ">
+
+                    <select id="JUG06-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG06-2-ROJ-DET" type="text" name="JUG06-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG06-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG06-2-RET">Retiro:</label> 
+                    <input id="JUG06-2-RET" type="checkbox" name="JUG06-2-RET">
+
+                    <label for="JUG06-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG06-2-ARQ" type="checkbox" name="JUG06-2-ARQ">
+
+                    <input id="JUG06-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG07-2">Jugador 7: </label> 
+                    <input id="JUG07-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG07-2-CAM">Cambio:</label> 
+                    <input id="JUG07-2-CAM" type="checkbox" name="JUG07-2-CAM"> 
+
+                    <input id="JUG07-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG07-2-LES">Lesión:</label>
+                    <input id="JUG07-2-LES" type="checkbox">
+
+                    <input id="JUG07-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG07-2-AMA">Amarilla:</label> 
+                    <input id="JUG07-2-AMA" type="checkbox" name="JUG07-2-AMA">
+
+                    <input id="JUG07-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG07-2-ROJ">Roja:</label> 
+                    <input id="JUG07-2-ROJ" type="checkbox" name="JUG07-2-ROJ">
+
+                    <select id="JUG07-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG07-2-ROJ-DET" type="text" name="JUG07-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG07-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG07-2-RET">Retiro:</label> 
+                    <input id="JUG07-2-RET" type="checkbox" name="JUG07-2-RET">
+
+                    <label for="JUG07-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG07-2-ARQ" type="checkbox" name="JUG07-2-ARQ">
+
+                    <input id="JUG07-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG08-2">Jugador 8: </label> 
+                    <input id="JUG08-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG08-2-CAM">Cambio:</label> 
+                    <input id="JUG08-2-CAM" type="checkbox" name="JUG08-2-CAM"> 
+
+                    <input id="JUG08-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG08-2-LES">Lesión:</label>
+                    <input id="JUG08-2-LES" type="checkbox">
+
+                    <input id="JUG08-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG08-2-AMA">Amarilla:</label> 
+                    <input id="JUG08-2-AMA" type="checkbox" name="JUG08-2-AMA">
+
+                    <input id="JUG08-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG08-2-ROJ">Roja:</label> 
+                    <input id="JUG08-2-ROJ" type="checkbox" name="JUG08-2-ROJ">
+
+                    <select id="JUG08-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG08-2-ROJ-DET" type="text" name="JUG08-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG08-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG08-2-RET">Retiro:</label> 
+                    <input id="JUG08-2-RET" type="checkbox" name="JUG08-2-RET">
+
+                    <label for="JUG08-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG08-2-ARQ" type="checkbox" name="JUG08-2-ARQ">
+
+                    <input id="JUG08-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG09-2">Jugador 9: </label> 
+                    <input id="JUG09-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG09-2-CAM">Cambio:</label> 
+                    <input id="JUG09-2-CAM" type="checkbox" name="JUG09-2-CAM"> 
+
+                    <input id="JUG09-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG09-2-LES">Lesión:</label>
+                    <input id="JUG09-2-LES" type="checkbox">
+
+                    <input id="JUG09-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG09-2-AMA">Amarilla:</label> 
+                    <input id="JUG09-2-AMA" type="checkbox" name="JUG09-2-AMA">
+
+                    <input id="JUG09-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG09-2-ROJ">Roja:</label> 
+                    <input id="JUG09-2-ROJ" type="checkbox" name="JUG09-2-ROJ">
+
+                    <select id="JUG09-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG09-2-ROJ-DET" type="text" name="JUG09-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG09-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG09-2-RET">Retiro:</label> 
+                    <input id="JUG09-2-RET" type="checkbox" name="JUG09-2-RET">
+
+                    <label for="JUG09-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG09-2-ARQ" type="checkbox" name="JUG09-2-ARQ">
+
+                    <input id="JUG09-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG10-2">Jugador 10: </label> 
+                    <input id="JUG10-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG10-2-CAM">Cambio:</label> 
+                    <input id="JUG10-2-CAM" type="checkbox" name="JUG10-2-CAM"> 
+
+                    <input id="JUG10-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG10-2-LES">Lesión:</label>
+                    <input id="JUG10-2-LES" type="checkbox">
+
+                    <input id="JUG10-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG10-2-AMA">Amarilla:</label> 
+                    <input id="JUG10-2-AMA" type="checkbox" name="JUG10-2-AMA">
+
+                    <input id="JUG10-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG10-2-ROJ">Roja:</label> 
+                    <input id="JUG10-2-ROJ" type="checkbox" name="JUG10-2-ROJ">
+
+                    <select id="JUG10-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG10-2-ROJ-DET" type="text" name="JUG10-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG10-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG10-2-RET">Retiro:</label> 
+                    <input id="JUG10-2-RET" type="checkbox" name="JUG10-2-RET">
+
+                    <label for="JUG10-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG10-2-ARQ" type="checkbox" name="JUG10-2-ARQ">
+
+                    <input id="JUG10-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="JUG11-2">Jugador 11: </label> 
+                    <input id="JUG11-2" type="text" placeholder="Nombre completo">
+
+                    <label for="JUG11-2-CAM">Cambio:</label> 
+                    <input id="JUG11-2-CAM" type="checkbox" name="JUG11-2-CAM"> 
+
+                    <input id="JUG11-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG11-2-LES">Lesión:</label>
+                    <input id="JUG11-2-LES" type="checkbox">
+
+                    <input id="JUG11-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="JUG11-2-AMA">Amarilla:</label> 
+                    <input id="JUG11-2-AMA" type="checkbox" name="JUG11-2-AMA">
+
+                    <input id="JUG11-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG11-2-ROJ">Roja:</label> 
+                    <input id="JUG11-2-ROJ" type="checkbox" name="JUG11-2-ROJ">
+
+                    <select id="JUG11-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="JUG11-2-ROJ-DET" type="text" name="JUG11-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="JUG11-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="JUG11-2-RET">Retiro:</label> 
+                    <input id="JUG11-2-RET" type="checkbox" name="JUG11-2-RET">
+
+                    <label for="JUG11-2-ARQ">¿Arquero?:</label> 
+                    <input id="JUG11-2-ARQ" type="checkbox" name="JUG11-2-ARQ">
+
+                    <input id="JUG11-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                
+                <div class="Linea-Formulario">
+
+                    <!-- JS: Es inmutable, ya que se carga primero en plantel y viendo la fecha se puede saber cuál es -->
+                    <label for="DT01-2">Técnico 1: </label> 
+                    <input id="DT01-2" type="text" placeholder="Nombre completo">
+
+                    <label for="DT01-2-AMA">Amarilla:</label> 
+                    <input id="DT01-2-AMA" type="checkbox" name="DT01-2-AMA">
+
+                    <input id="DT01-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="DT01-2-ROJ">Roja:</label> 
+                    <input id="DT01-2-ROJ" type="checkbox" name="DT01-2-ROJ">
+
+                    <input id="DT01-2-ROJ-DET" type="text" name="DT01-2-ROJ-RAZ" placeholder="Detalles">
+
+                    <input id="DT01-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="DT01-2-RET">Retiro:</label> 
+                    <input id="DT01-2-RET" type="checkbox" name="DT01-2-RET">
+
+                    <label for="DT01-2-DES">Despido:</label> 
+                    <input id="DT01-2-DES" type="checkbox" name="DT01-2-DES">
+
+                    <label for="DT01-2-REN">Renuncia:</label> 
+                    <input id="DT01-2-REN" type="checkbox" name="DT01-2-REN">
+                </div>
+
+
+                <!-- Suplentes -->
+
+                <div class="Linea-Formulario">
+                    <label for="SUP01-2">Suplente 1: </label> 
+                    <input id="SUP01-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP01-2-CAM">Cambio:</label> 
+                    <input id="SUP01-2-CAM" type="checkbox" name="SUP01-2-CAM"> 
+
+                    <input id="SUP01-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP01-2-LES">Lesión:</label>
+                    <input id="SUP01-2-LES" type="checkbox">
+
+                    <input id="SUP01-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP01-2-AMA">Amarilla:</label> 
+                    <input id="SUP01-2-AMA" type="checkbox" name="SUP01-2-AMA">
+
+                    <input id="SUP01-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP01-2-ROJ">Roja:</label> 
+                    <input id="SUP01-2-ROJ" type="checkbox" name="SUP01-2-ROJ">
+
+                    <select id="SUP01-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP01-2-ROJ-DET" type="text" name="SUP01-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP01-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP01-2-RET">Retiro:</label> 
+                    <input id="SUP01-2-RET" type="checkbox" name="SUP01-2-RET">
+
+                    <label for="SUP01-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP01-2-ARQ" type="checkbox" name="SUP01-2-ARQ">
+
+                    <input id="SUP01-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP02-2">Suplente 2: </label> 
+                    <input id="SUP02-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP02-2-CAM">Cambio:</label> 
+                    <input id="SUP02-2-CAM" type="checkbox" name="SUP02-2-CAM"> 
+
+                    <input id="SUP02-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP02-2-LES">Lesión:</label>
+                    <input id="SUP02-2-LES" type="checkbox">
+
+                    <input id="SUP02-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP02-2-AMA">Amarilla:</label> 
+                    <input id="SUP02-2-AMA" type="checkbox" name="SUP02-2-AMA">
+
+                    <input id="SUP02-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP02-2-ROJ">Roja:</label> 
+                    <input id="SUP02-2-ROJ" type="checkbox" name="SUP02-2-ROJ">
+
+                    <select id="SUP02-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP02-2-ROJ-DET" type="text" name="SUP02-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP02-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP02-2-RET">Retiro:</label> 
+                    <input id="SUP02-2-RET" type="checkbox" name="SUP02-2-RET">
+
+                    <label for="SUP02-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP02-2-ARQ" type="checkbox" name="SUP02-2-ARQ">
+
+                    <input id="SUP02-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP03-2">Suplente 3: </label> 
+                    <input id="SUP03-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP03-2-CAM">Cambio:</label> 
+                    <input id="SUP03-2-CAM" type="checkbox" name="SUP03-2-CAM"> 
+
+                    <input id="SUP03-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP03-2-LES">Lesión:</label>
+                    <input id="SUP03-2-LES" type="checkbox">
+
+                    <input id="SUP03-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP03-2-AMA">Amarilla:</label> 
+                    <input id="SUP03-2-AMA" type="checkbox" name="SUP03-2-AMA">
+
+                    <input id="SUP03-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP03-2-ROJ">Roja:</label> 
+                    <input id="SUP03-2-ROJ" type="checkbox" name="SUP03-2-ROJ">
+
+                    <select id="SUP03-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP03-2-ROJ-DET" type="text" name="SUP03-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP03-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP03-2-RET">Retiro:</label> 
+                    <input id="SUP03-2-RET" type="checkbox" name="SUP03-2-RET">
+
+                    <label for="SUP03-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP03-2-ARQ" type="checkbox" name="SUP03-2-ARQ">
+
+                    <input id="SUP03-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP04-2">Suplente 4: </label> 
+                    <input id="SUP04-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP04-2-CAM">Cambio:</label> 
+                    <input id="SUP04-2-CAM" type="checkbox" name="SUP04-2-CAM"> 
+
+                    <input id="SUP04-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP04-2-LES">Lesión:</label>
+                    <input id="SUP04-2-LES" type="checkbox">
+
+                    <input id="SUP04-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP04-2-AMA">Amarilla:</label> 
+                    <input id="SUP04-2-AMA" type="checkbox" name="SUP04-2-AMA">
+
+                    <input id="SUP04-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP04-2-ROJ">Roja:</label> 
+                    <input id="SUP04-2-ROJ" type="checkbox" name="SUP04-2-ROJ">
+
+                    <select id="SUP04-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP04-2-ROJ-DET" type="text" name="SUP04-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP04-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP04-2-RET">Retiro:</label> 
+                    <input id="SUP04-2-RET" type="checkbox" name="SUP04-2-RET">
+
+                    <label for="SUP04-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP04-2-ARQ" type="checkbox" name="SUP04-2-ARQ">
+
+                    <input id="SUP04-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP05-2">Suplente 5: </label> 
+                    <input id="SUP05-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP05-2-CAM">Cambio:</label> 
+                    <input id="SUP05-2-CAM" type="checkbox" name="SUP05-2-CAM"> 
+
+                    <input id="SUP05-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP05-2-LES">Lesión:</label>
+                    <input id="SUP05-2-LES" type="checkbox">
+
+                    <input id="SUP05-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP05-2-AMA">Amarilla:</label> 
+                    <input id="SUP05-2-AMA" type="checkbox" name="SUP05-2-AMA">
+
+                    <input id="SUP05-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP05-2-ROJ">Roja:</label> 
+                    <input id="SUP05-2-ROJ" type="checkbox" name="SUP05-2-ROJ">
+
+                    <select id="SUP05-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP05-2-ROJ-DET" type="text" name="SUP05-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP05-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP05-2-RET">Retiro:</label> 
+                    <input id="SUP05-2-RET" type="checkbox" name="SUP05-2-RET">
+
+                    <label for="SUP05-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP05-2-ARQ" type="checkbox" name="SUP05-2-ARQ">
+
+                    <input id="SUP05-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP06-2">Suplente 6: </label> 
+                    <input id="SUP06-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP06-2-CAM">Cambio:</label> 
+                    <input id="SUP06-2-CAM" type="checkbox" name="SUP06-2-CAM"> 
+
+                    <input id="SUP06-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP06-2-LES">Lesión:</label>
+                    <input id="SUP06-2-LES" type="checkbox">
+
+                    <input id="SUP06-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP06-2-AMA">Amarilla:</label> 
+                    <input id="SUP06-2-AMA" type="checkbox" name="SUP06-2-AMA">
+
+                    <input id="SUP06-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP06-2-ROJ">Roja:</label> 
+                    <input id="SUP06-2-ROJ" type="checkbox" name="SUP06-2-ROJ">
+
+                    <select id="SUP06-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP06-2-ROJ-DET" type="text" name="SUP06-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP06-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP06-2-RET">Retiro:</label> 
+                    <input id="SUP06-2-RET" type="checkbox" name="SUP06-2-RET">
+
+                    <label for="SUP06-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP06-2-ARQ" type="checkbox" name="SUP06-2-ARQ">
+
+                    <input id="SUP06-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP07-2">Suplente 7: </label> 
+                    <input id="SUP07-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP07-2-CAM">Cambio:</label> 
+                    <input id="SUP07-2-CAM" type="checkbox" name="SUP07-2-CAM"> 
+
+                    <input id="SUP07-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP07-2-LES">Lesión:</label>
+                    <input id="SUP07-2-LES" type="checkbox">
+
+                    <input id="SUP07-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP07-2-AMA">Amarilla:</label> 
+                    <input id="SUP07-2-AMA" type="checkbox" name="SUP07-2-AMA">
+
+                    <input id="SUP07-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP07-2-ROJ">Roja:</label> 
+                    <input id="SUP07-2-ROJ" type="checkbox" name="SUP07-2-ROJ">
+
+                    <select id="SUP07-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP07-2-ROJ-DET" type="text" name="SUP07-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP07-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP07-2-RET">Retiro:</label> 
+                    <input id="SUP07-2-RET" type="checkbox" name="SUP07-2-RET">
+
+                    <label for="SUP07-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP07-2-ARQ" type="checkbox" name="SUP07-2-ARQ">
+
+                    <input id="SUP07-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP08-2">Suplente 8: </label> 
+                    <input id="SUP08-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP08-2-CAM">Cambio:</label> 
+                    <input id="SUP08-2-CAM" type="checkbox" name="SUP08-2-CAM"> 
+
+                    <input id="SUP08-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP08-2-LES">Lesión:</label>
+                    <input id="SUP08-2-LES" type="checkbox">
+
+                    <input id="SUP08-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP08-2-AMA">Amarilla:</label> 
+                    <input id="SUP08-2-AMA" type="checkbox" name="SUP08-2-AMA">
+
+                    <input id="SUP08-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP08-2-ROJ">Roja:</label> 
+                    <input id="SUP08-2-ROJ" type="checkbox" name="SUP08-2-ROJ">
+
+                    <select id="SUP08-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP08-2-ROJ-DET" type="text" name="SUP08-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP08-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP08-2-RET">Retiro:</label> 
+                    <input id="SUP08-2-RET" type="checkbox" name="SUP08-2-RET">
+
+                    <label for="SUP08-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP08-2-ARQ" type="checkbox" name="SUP08-2-ARQ">
+
+                    <input id="SUP08-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP09-2">Suplente 9: </label> 
+                    <input id="SUP09-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP09-2-CAM">Cambio:</label> 
+                    <input id="SUP09-2-CAM" type="checkbox" name="SUP09-2-CAM"> 
+
+                    <input id="SUP09-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP09-2-LES">Lesión:</label>
+                    <input id="SUP09-2-LES" type="checkbox">
+
+                    <input id="SUP09-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP09-2-AMA">Amarilla:</label> 
+                    <input id="SUP09-2-AMA" type="checkbox" name="SUP09-2-AMA">
+
+                    <input id="SUP09-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP09-2-ROJ">Roja:</label> 
+                    <input id="SUP09-2-ROJ" type="checkbox" name="SUP09-2-ROJ">
+
+                    <select id="SUP09-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP09-2-ROJ-DET" type="text" name="SUP09-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP09-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP09-2-RET">Retiro:</label> 
+                    <input id="SUP09-2-RET" type="checkbox" name="SUP09-2-RET">
+
+                    <label for="SUP09-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP09-2-ARQ" type="checkbox" name="SUP09-2-ARQ">
+
+                    <input id="SUP09-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+
+                <div class="Linea-Formulario">
+                    <label for="SUP10-2">Suplente 10: </label> 
+                    <input id="SUP10-2" type="text" placeholder="Nombre completo">
+
+                    <label for="SUP10-2-CAM">Cambio:</label> 
+                    <input id="SUP10-2-CAM" type="checkbox" name="SUP10-2-CAM"> 
+
+                    <input id="SUP10-2-CAM-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP10-2-LES">Lesión:</label>
+                    <input id="SUP10-2-LES" type="checkbox">
+
+                    <input id="SUP10-2-REE" type="text" placeholder="Reemplazo">
+
+                    <label for="SUP10-2-AMA">Amarilla:</label> 
+                    <input id="SUP10-2-AMA" type="checkbox" name="SUP10-2-AMA">
+
+                    <input id="SUP10-2-AMA-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP10-2-ROJ">Roja:</label> 
+                    <input id="SUP10-2-ROJ" type="checkbox" name="SUP10-2-ROJ">
+
+                    <select id="SUP10-2-ROJ-RAZ">
+                        <option disabled selected>--- Seleccionar ---</option> 
+                        <option>Doble amarilla</option>
+                        <option>Directa</option>
+                    </select>
+
+                    <input id="SUP10-2-ROJ-DET" type="text" name="SUP10-2-ROJ-RAZ" placeholder="Detalles">
+                    <input id="SUP10-2-ROJ-MIN" type="number" placeholder="Minuto">
+
+                    <label for="SUP10-2-RET">Retiro:</label> 
+                    <input id="SUP10-2-RET" type="checkbox" name="SUP10-2-RET">
+
+                    <label for="SUP10-2-ARQ">¿Arquero?:</label> 
+                    <input id="SUP10-2-ARQ" type="checkbox" name="SUP10-2-ARQ">
+
+                    <input id="SUP10-2-ARQ-MIN" type="number" placeholder="Minuto">
+                </div>
+            </fieldset>
+
+        </fieldset>
+
+        </form>
+    </body>
+
+    <!-- Script para poder poner imágenes AVIF y Webp de fondo.
+    Se copia de: https://gist.github.com/juanpablogdl/3bbdf0f2920cd9c65187128dd1c032cc -->
+    <script src="Imagenes.js"></script>
+    <script src="Script.js"></script>    
+</html>

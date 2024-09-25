@@ -1,0 +1,28 @@
+//JSON.
+//No se pone comas al final.
+//Son como objetos en base de datos.
+
+{
+    "empleados" : [
+        {
+            "id" : 1,
+            "nombre": "Patricio",
+            "puesto" : "Programador"
+        },
+        {
+            "id" : 2,
+            "nombre": "Jorge",
+            "puesto" : "Carpintero"
+        },
+        {
+            "id" : 3,
+            "nombre": "Karen",
+            "puesto" : "Puta"
+        },
+        {
+            "id" : 4,
+            "nombre": "Carlos",
+            "puesto" : "Servidores"
+        }
+    ]
+}
